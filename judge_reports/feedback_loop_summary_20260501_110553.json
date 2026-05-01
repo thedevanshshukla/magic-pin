@@ -1,0 +1,182 @@
+{
+  "generated_at": "2026-05-01T05:35:53Z",
+  "bot_url": "http://localhost:8000",
+  "iterations": [
+    {
+      "iteration": 1,
+      "summary": {
+        "message_count": 5,
+        "average_scores": {
+          "specificity": 6,
+          "category_fit": 8,
+          "merchant_fit": 7,
+          "trigger_relevance": 8,
+          "engagement_compulsion": 7,
+          "penalties": 0,
+          "total": 36,
+          "percent": 72.0
+        },
+        "weakest_dimensions": {
+          "specificity": 6.8,
+          "engagement_compulsion": 7.0,
+          "merchant_fit": 7.8,
+          "trigger_relevance": 8.4,
+          "category_fit": 8.6
+        },
+        "worst_messages": [
+          {
+            "message": "compliance requirement due by 2026-12-15. Acting early avoids penalties.. I can create a compliance checklist.. Want me to do this for you?",
+            "cta": "Want me to do this for you?",
+            "send_as": "vera",
+            "trigger_id": "trg_002_compliance_dci_radiograph",
+            "trigger_kind": "regulation_change",
+            "merchant_id": "m_001_drmeera_dentist_delhi",
+            "merchant_name": "Dr. Meera's Dental Clinic",
+            "customer_id": null,
+            "category_slug": "dentists",
+            "scores": {
+              "specificity": 6,
+              "category_fit": 8,
+              "merchant_fit": 7,
+              "trigger_relevance": 9,
+              "engagement_compulsion": 7,
+              "penalties": 0,
+              "total": 37
+            },
+            "reasons": {
+              "specificity": "The message includes a specific deadline of 2026-12-15, but lacks additional verifiable facts such as the nature of the compliance requirement or potential penalties.",
+              "category_fit": "The voice is appropriate for a dental clinic, maintaining a clinical tone while addressing compliance, which is relevant to the field.",
+              "merchant_fit": "The message addresses Dr. Meera's clinic contextually, but it could be improved by directly mentioning her name or the clinic's specific situation.",
+              "trigger_relevance": "The message directly relates to the regulation change trigger and emphasizes the urgency of compliance, making it timely and relevant.",
+              "engagement_compulsion": "The CTA is clear and low friction, but it could be more compelling by highlighting the benefits of acting early or the consequences of inaction.",
+              "penalties": []
+            },
+            "hint": "Consider weaving in more specific compliance details to enhance urgency and relevance.",
+            "rationale": "regulation_change trigger"
+          },
+          {
+            "message": "Wedding on 2026-11-08 \u2014 196 days away. Now is the time to start your skin prep.. I can schedule your first session.. Want me to do this for you?",
+            "cta": "Want me to do this for you?",
+            "send_as": "merchant_on_behalf",
+            "trigger_id": "trg_007_bridal_followup_kavya",
+            "trigger_kind": "wedding_package_followup",
+            "merchant_id": "m_003_studio11_salon_hyderabad",
+            "merchant_name": "Studio11 Family Salon",
+            "customer_id": "c_005_kavya_for_m003",
+            "category_slug": "salons",
+            "scores": {
+              "specificity": 7,
+              "category_fit": 8,
+              "merchant_fit": 6,
+              "trigger_relevance": 9,
+              "engagement_compulsion": 7,
+              "penalties": 0,
+              "total": 37
+            },
+            "reasons": {
+              "specificity": "The message includes a specific wedding date and the number of days until the event, which adds verifiable context. However, it lacks additional concrete details such as pricing or specific services offered.",
+              "category_fit": "The voice is warm and practical, which aligns well with the salon category. It maintains a friendly tone appropriate for a salon engagement.",
+              "merchant_fit": "While the message addresses the customer by name and references the wedding date, it does not mention the salon's name or owner, which would enhance personalization.",
+              "trigger_relevance": "The message effectively connects to the trigger of a wedding package follow-up by emphasizing the urgency of starting skin prep for the upcoming wedding.",
+              "engagement_compulsion": "The CTA is clear and low friction, encouraging a response. However, it could be more compelling by incorporating a sense of urgency or a special offer related to the skin prep program.",
+              "penalties": []
+            },
+            "hint": "Consider weaving in the salon's name or a special offer to enhance personalization and urgency.",
+            "rationale": "wedding_package_followup trigger"
+          },
+          {
+            "message": "Your profile is still unverified on Google.. This is limiting your discoverability.. I can guide you through verification.. Want me to do this for you?",
+            "cta": "Want me to do this for you?",
+            "send_as": "vera",
+            "trigger_id": "trg_021_unverified_gbp_sunrise",
+            "trigger_kind": "gbp_unverified",
+            "merchant_id": "m_010_sunrisepharm_pharmacy_lucknow",
+            "merchant_name": "Sunrise Medicos",
+            "customer_id": null,
+            "category_slug": "pharmacies",
+            "scores": {
+              "specificity": 6,
+              "category_fit": 9,
+              "merchant_fit": 8,
+              "trigger_relevance": 7,
+              "engagement_compulsion": 7,
+              "penalties": 0,
+              "total": 37
+            },
+            "reasons": {
+              "specificity": "The message mentions the unverified status but lacks specific details such as the estimated uplift percentage or the verification method, which could strengthen the claim.",
+              "category_fit": "The voice is trustworthy and precise, which aligns well with the pharmacy category, making it suitable for the merchant's context.",
+              "merchant_fit": "The message addresses the merchant directly and uses their profile context, but it could include the merchant's name for a more personalized touch.",
+              "trigger_relevance": "The message connects to the trigger of unverified status, but it could be more compelling by emphasizing the urgency of the situation.",
+              "engagement_compulsion": "The CTA is clear and low friction, but it could be enhanced by adding a sense of urgency or potential benefits of verification.",
+              "penalties": []
+            },
+            "hint": "A name drop could elevate the personal touch.",
+            "rationale": "gbp_unverified trigger"
+          },
+          {
+            "message": "Rashmi, it's been 57 days since your weight_loss session. You were with us for 5 months \u2014 you can return.. I can draft a personalized comeback offer.. Want me to do this for you?",
+            "cta": "Want me to do this for you?",
+            "send_as": "merchant_on_behalf",
+            "trigger_id": "trg_015_winback_rashmi",
+            "trigger_kind": "customer_lapsed_hard",
+            "merchant_id": "m_007_powerhouse_gym_bangalore",
+            "merchant_name": "PowerHouse Fitness",
+            "customer_id": "c_010_rashmi_for_m007",
+            "category_slug": "gyms",
+            "scores": {
+              "specificity": 7,
+              "category_fit": 8,
+              "merchant_fit": 9,
+              "trigger_relevance": 8,
+              "engagement_compulsion": 7,
+              "penalties": 0,
+              "total": 39
+            },
+            "reasons": {
+              "specificity": "The message includes specific data about the days since the last visit (57 days) and the duration of the previous membership (5 months), but lacks verifiable facts like percentages or concrete offers.",
+              "category_fit": "The energetic and disciplined tone is appropriate for a gym, encouraging the customer to return to their fitness journey.",
+              "merchant_fit": "The message is personalized with the customer's name and references their previous focus on weight loss, aligning well with the merchant's identity.",
+              "trigger_relevance": "The message directly addresses the customer's lapse in attendance and connects it to their previous focus, making it relevant to the trigger.",
+              "engagement_compulsion": "The CTA is clear and invites a response, but could be more compelling by emphasizing the benefits of returning or the specifics of the personalized offer.",
+              "penalties": []
+            },
+            "hint": "Consider adding a tangible incentive to spark immediate interest.",
+            "rationale": "customer_lapsed_hard trigger"
+          },
+          {
+            "message": "Atorvastatin \u2014 2 batches affected: AT2024-1102, AT2024-1108. This needs prompt action to protect patients.. I can draft a patient-safe notification.. Want me to do this for you?",
+            "cta": "Want me to do this for you?",
+            "send_as": "vera",
+            "trigger_id": "trg_018_supply_atorvastatin_recall",
+            "trigger_kind": "supply_alert",
+            "merchant_id": "m_009_apollo_pharmacy_jaipur",
+            "merchant_name": "Apollo Health Plus Pharmacy",
+            "customer_id": null,
+            "category_slug": "pharmacies",
+            "scores": {
+              "specificity": 8,
+              "category_fit": 10,
+              "merchant_fit": 9,
+              "trigger_relevance": 9,
+              "engagement_compulsion": 7,
+              "penalties": 0,
+              "total": 43
+            },
+            "reasons": {
+              "specificity": "The message includes specific details about the affected batches of atorvastatin, which is a verifiable fact. However, it lacks a date or source citation for the recall.",
+              "category_fit": "The voice is trustworthy and precise, which aligns perfectly with the pharmacy category, ensuring the message conveys reliability.",
+              "merchant_fit": "The message is personalized to Apollo Health Plus Pharmacy and references the specific issue related to atorvastatin, but it could include the owner's name for a more personal touch.",
+              "trigger_relevance": "The message directly addresses the supply alert for atorvastatin, making it relevant to the trigger provided, though it could emphasize the urgency more.",
+              "engagement_compulsion": "The CTA is clear and low friction, encouraging a response, but it could be more compelling by highlighting the importance of patient safety.",
+              "penalties": []
+            },
+            "hint": "A name drop could enhance the personal touch.",
+            "rationale": "supply_alert trigger"
+          }
+        ]
+      },
+      "report_path": "D:\\projects\\magicpin\\judge_reports\\latest_judge_report_20260501_053553.json"
+    }
+  ]
+}

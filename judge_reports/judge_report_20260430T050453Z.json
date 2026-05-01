@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-04-30T05:04:53.722071Z",
+  "bot_url": "http://localhost:8000",
+  "llm_provider": "Groq (llama-3.1-8b-instant)",
+  "scenario": "full_evaluation",
+  "message_count": 5,
+  "average_scores": {
+    "specificity": 9,
+    "category_fit": 5,
+    "merchant_fit": 5,
+    "trigger_relevance": 5,
+    "engagement_compulsion": 5,
+    "penalties": 0,
+    "total": 29,
+    "percent": 58.0
+  },
+  "messages": [
+    {
+      "message": "Hi Priya, Dr. Meera's Dental Clinic here. It's been 5 months since your last visit. 2 slots ready hain: Wed 5 Nov, 6pm ya Thu 6 Nov, 5pm. Dental Cleaning @ \u20b9299 + complimentary fluoride. Your 6-month cleaning recall is due now. I can hold the slot that suits you. Reply 1 for the first slot or 2 for the second.",
+      "cta": "Reply 1 for the first slot or 2 for the second.",
+      "send_as": "merchant_on_behalf",
+      "trigger_id": "trg_003_recall_due_priya",
+      "trigger_kind": "recall_due",
+      "merchant_id": "m_001_drmeera_dentist_delhi",
+      "merchant_name": "Dr. Meera's Dental Clinic",
+      "customer_id": "c_001_priya_for_m001",
+      "category_slug": "dentists",
+      "scores": {
+        "specificity": 10,
+        "category_fit": 5,
+        "merchant_fit": 5,
+        "trigger_relevance": 5,
+        "engagement_compulsion": 5,
+        "penalties": 0,
+        "total": 30
+      },
+      "reasons": {
+        "specificity": "Fallback: counted numbers in message",
+        "category_fit": "Could not evaluate",
+        "merchant_fit": "Could not evaluate",
+        "trigger_relevance": "Could not evaluate",
+        "engagement_compulsion": "Could not evaluate",
+        "penalties": []
+      },
+      "hint": "LLM scoring failed - using basic heuristics",
+      "rationale": "recall_due trigger selected with score 54 (urgency 3, impact 5, ease 5, engagement 5)."
+    },
+    {
+      "message": "Anjali, your Pro plan expired 38 days ago and 24 more customers lapsed in Aundh. Even a 10% winback here is about 2 bookings back without new ad spend. I can draft a concise restart WhatsApp for your regulars. Want me to send it?",
+      "cta": "Want me to send it?",
+      "send_as": "vera",
+      "trigger_id": "trg_009_winback_glamour",
+      "trigger_kind": "winback_eligible",
+      "merchant_id": "m_004_glamour_salon_pune",
+      "merchant_name": "Glamour Lounge Spa & Salon",
+      "customer_id": null,
+      "category_slug": "salons",
+      "scores": {
+        "specificity": 10,
+        "category_fit": 5,
+        "merchant_fit": 5,
+        "trigger_relevance": 5,
+        "engagement_compulsion": 5,
+        "penalties": 0,
+        "total": 30
+      },
+      "reasons": {
+        "specificity": "Fallback: counted numbers in message",
+        "category_fit": "Could not evaluate",
+        "merchant_fit": "Could not evaluate",
+        "trigger_relevance": "Could not evaluate",
+        "engagement_compulsion": "Could not evaluate",
+        "penalties": []
+      },
+      "hint": "LLM scoring failed - using basic heuristics",
+      "rationale": "winback_eligible trigger selected with score 38 (urgency 2, impact 3, ease 4, engagement 4)."
+    },
+    {
+      "message": "Hi Rashmi, Karthik from PowerHouse Fitness here. It's been 57 days since your last visit. A gentle restart is better than waiting longer for your weight loss routine. I can hold a free trial spot in the Tue/Thu 6:30pm HIIT class. Reply YES if you want me to hold it.",
+      "cta": "Reply YES if you want me to hold it.",
+      "send_as": "merchant_on_behalf",
+      "trigger_id": "trg_015_winback_rashmi",
+      "trigger_kind": "customer_lapsed_hard",
+      "merchant_id": "m_007_powerhouse_gym_bangalore",
+      "merchant_name": "PowerHouse Fitness",
+      "customer_id": "c_010_rashmi_for_m007",
+      "category_slug": "gyms",
+      "scores": {
+        "specificity": 9,
+        "category_fit": 5,
+        "merchant_fit": 5,
+        "trigger_relevance": 5,
+        "engagement_compulsion": 5,
+        "penalties": 0,
+        "total": 29
+      },
+      "reasons": {
+        "specificity": "Fallback: counted numbers in message",
+        "category_fit": "Could not evaluate",
+        "merchant_fit": "Could not evaluate",
+        "trigger_relevance": "Could not evaluate",
+        "engagement_compulsion": "Could not evaluate",
+        "penalties": []
+      },
+      "hint": "LLM scoring failed - using basic heuristics",
+      "rationale": "customer_lapsed_hard trigger selected with score 50 (urgency 3, impact 4, ease 5, engagement 5)."
+    },
+    {
+      "message": "Ramesh, atorvastatin batches AT2024-1102, AT2024-1108 are under recall and about 22 of your 240 chronic-Rx customers may be affected. This needs a calm replacement workflow, not a vague alert. I can draft the WhatsApp note and replacement-pickup workflow. Want me to send the draft?",
+      "cta": "Want me to send the draft?",
+      "send_as": "vera",
+      "trigger_id": "trg_018_supply_atorvastatin_recall",
+      "trigger_kind": "supply_alert",
+      "merchant_id": "m_009_apollo_pharmacy_jaipur",
+      "merchant_name": "Apollo Health Plus Pharmacy",
+      "customer_id": null,
+      "category_slug": "pharmacies",
+      "scores": {
+        "specificity": 10,
+        "category_fit": 5,
+        "merchant_fit": 5,
+        "trigger_relevance": 5,
+        "engagement_compulsion": 5,
+        "penalties": 0,
+        "total": 30
+      },
+      "reasons": {
+        "specificity": "Fallback: counted numbers in message",
+        "category_fit": "Could not evaluate",
+        "merchant_fit": "Could not evaluate",
+        "trigger_relevance": "Could not evaluate",
+        "engagement_compulsion": "Could not evaluate",
+        "penalties": []
+      },
+      "hint": "LLM scoring failed - using basic heuristics",
+      "rationale": "supply_alert trigger selected with score 60 (urgency 5, impact 5, ease 5, engagement 5)."
+    },
+    {
+      "message": "Vikas, Sunrise Medicos is still unverified in Gomti Nagar and verification can lift visibility by 30%. That is a faster discovery fix than another promo while the listing is capped. I can map the postcard-or-phone-call verification path in 3 quick steps. Want the steps?",
+      "cta": "Want the steps?",
+      "send_as": "vera",
+      "trigger_id": "trg_021_unverified_gbp_sunrise",
+      "trigger_kind": "gbp_unverified",
+      "merchant_id": "m_010_sunrisepharm_pharmacy_lucknow",
+      "merchant_name": "Sunrise Medicos",
+      "customer_id": null,
+      "category_slug": "pharmacies",
+      "scores": {
+        "specificity": 7,
+        "category_fit": 5,
+        "merchant_fit": 5,
+        "trigger_relevance": 5,
+        "engagement_compulsion": 5,
+        "penalties": 0,
+        "total": 27
+      },
+      "reasons": {
+        "specificity": "Fallback: counted numbers in message",
+        "category_fit": "Could not evaluate",
+        "merchant_fit": "Could not evaluate",
+        "trigger_relevance": "Could not evaluate",
+        "engagement_compulsion": "Could not evaluate",
+        "penalties": []
+      },
+      "hint": "LLM scoring failed - using basic heuristics",
+      "rationale": "gbp_unverified trigger selected with score 43 (urgency 3, impact 4, ease 3, engagement 4)."
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-04-30T07:20:32.446506Z",
+  "bot_url": "http://localhost:8000",
+  "llm_provider": "OpenAI (gpt-4o-mini)",
+  "scenario": "full_evaluation",
+  "message_count": 5,
+  "average_scores": {
+    "specificity": 6,
+    "category_fit": 8,
+    "merchant_fit": 7,
+    "trigger_relevance": 8,
+    "engagement_compulsion": 6,
+    "penalties": 0,
+    "total": 35,
+    "percent": 70.0
+  },
+  "messages": [
+    {
+      "message": "calls down 50% in 7d around your Andheri West area this week. That is roughly 6 missed calls against your normal pace. for your patients. I can draft one sharper service hook for this week. \u2014 I\u2019ve drafted this already, takes 2 mins to push. Want me to fix this drop now?",
+      "cta": "Want me to fix this drop now?",
+      "send_as": "vera",
+      "trigger_id": "trg_004_perf_dip_bharat",
+      "trigger_kind": "perf_dip",
+      "merchant_id": "m_002_bharat_dentist_mumbai",
+      "merchant_name": "Bharat Dental Care",
+      "customer_id": null,
+      "category_slug": "dentists",
+      "scores": {
+        "specificity": 6,
+        "category_fit": 8,
+        "merchant_fit": 7,
+        "trigger_relevance": 9,
+        "engagement_compulsion": 7,
+        "penalties": 0,
+        "total": 37
+      },
+      "reasons": {
+        "specificity": "The message mentions a 50% drop in calls and estimates 6 missed calls, but it lacks a clear source for these numbers and could be more precise about the normal pace of calls.",
+        "category_fit": "The voice is clinical and peer-oriented, which fits well with the dental category, but it could be slightly warmer to enhance engagement.",
+        "merchant_fit": "The message uses the merchant's name and references their locality, but it does not personalize the message further by addressing Bharat directly or acknowledging their specific offers.",
+        "trigger_relevance": "The message directly addresses the performance dip in calls, making it relevant to the trigger, but it could specify the baseline for clearer context.",
+        "engagement_compulsion": "The CTA is clear and low friction, but it could be more compelling by emphasizing the potential impact of fixing the drop on patient engagement.",
+        "penalties": []
+      },
+      "hint": "Consider adding a personal touch and a stronger rationale for the proposed action.",
+      "rationale": "perf_dip trigger selected with score 11 (urgency 4, impact 4, ease 3, engagement 5)."
+    },
+    {
+      "message": "196 days to wedding around your Kapra area recently. This is the right prep window before bridal bookings tighten. \u2014 even 10% improvement = ~22 visits this week. I can hold your preferred slot for the next consult. \u2014 I\u2019ve drafted this already, takes 2 mins to push. Want me to set this Haircut @ \u20b999 live now?",
+      "cta": "Want me to set this Haircut @ \u20b999 live now?",
+      "send_as": "merchant_on_behalf",
+      "trigger_id": "trg_007_bridal_followup_kavya",
+      "trigger_kind": "wedding_package_followup",
+      "merchant_id": "m_003_studio11_salon_hyderabad",
+      "merchant_name": "Studio11 Family Salon",
+      "customer_id": "c_005_kavya_for_m003",
+      "category_slug": "salons",
+      "scores": {
+        "specificity": 7,
+        "category_fit": 8,
+        "merchant_fit": 9,
+        "trigger_relevance": 8,
+        "engagement_compulsion": 7,
+        "penalties": 0,
+        "total": 39
+      },
+      "reasons": {
+        "specificity": "The message includes specific numbers related to the wedding timeline and potential visits, but lacks precise data on the source of the 10% improvement claim.",
+        "category_fit": "The voice is warm and practical, which aligns well with the salon category, making it approachable for the customer.",
+        "merchant_fit": "The message is personalized to the merchant, referencing their specific offers and the customer's situation accurately.",
+        "trigger_relevance": "The message connects well to the wedding package follow-up and the urgency of the upcoming wedding date, but could enhance clarity on the urgency aspect.",
+        "engagement_compulsion": "The CTA is clear and low friction, but could be more compelling by emphasizing the benefits of booking now or creating a sense of urgency.",
+        "penalties": []
+      },
+      "hint": "Consider enhancing the urgency and clarity of the benefits to drive a stronger response.",
+      "rationale": "wedding_package_followup trigger selected with score 6 (urgency 2, impact 2, ease 3, engagement 4)."
+    },
+    {
+      "message": "57 days since last visit around your HSR Layout area recently. This can drive immediate results. I can set this up for you now \u2014 go ahead?",
+      "cta": "I can set this up for you now \u2014 go ahead?",
+      "send_as": "merchant_on_behalf",
+      "trigger_id": "trg_015_winback_rashmi",
+      "trigger_kind": "customer_lapsed_hard",
+      "merchant_id": "m_007_powerhouse_gym_bangalore",
+      "merchant_name": "PowerHouse Fitness",
+      "customer_id": "c_010_rashmi_for_m007",
+      "category_slug": "gyms",
+      "scores": {
+        "specificity": 5,
+        "category_fit": 7,
+        "merchant_fit": 6,
+        "trigger_relevance": 6,
+        "engagement_compulsion": 5,
+        "penalties": 0,
+        "total": 29
+      },
+      "reasons": {
+        "specificity": "The message mentions the number of days since the last visit but lacks concrete data about the gym's offerings or performance metrics that could enhance specificity.",
+        "category_fit": "The energetic tone is appropriate for a gym, but it could be more motivational and engaging to better resonate with fitness enthusiasts.",
+        "merchant_fit": "While the message addresses the customer by name and references the locality, it does not mention the gym's name or any specific offers that would personalize it further.",
+        "trigger_relevance": "The message acknowledges the lapse in attendance but does not effectively connect to the customer's previous focus on weight loss or the available trial classes.",
+        "engagement_compulsion": "The CTA is present but lacks urgency or a compelling reason for Rashmi to respond immediately, making it less likely to prompt a reply.",
+        "penalties": []
+      },
+      "hint": "Consider weaving in specific offers and a more compelling reason for immediate action.",
+      "rationale": "customer_lapsed_hard trigger selected with score 8 (urgency 3, impact 4, ease 5, engagement 5)."
+    },
+    {
+      "message": "2 affected batches; about 22 of your 240 chronic-Rx customers may be affected around your Malviya Nagar area recently. This can drive immediate results. I can set this up for you now \u2014 go ahead?",
+      "cta": "I can set this up for you now \u2014 go ahead?",
+      "send_as": "vera",
+      "trigger_id": "trg_018_supply_atorvastatin_recall",
+      "trigger_kind": "supply_alert",
+      "merchant_id": "m_009_apollo_pharmacy_jaipur",
+      "merchant_name": "Apollo Health Plus Pharmacy",
+      "customer_id": null,
+      "category_slug": "pharmacies",
+      "scores": {
+        "specificity": 7,
+        "category_fit": 9,
+        "merchant_fit": 8,
+        "trigger_relevance": 8,
+        "engagement_compulsion": 6,
+        "penalties": 0,
+        "total": 38
+      },
+      "reasons": {
+        "specificity": "The message provides specific numbers regarding the affected batches and the estimated number of chronic-Rx customers, which adds verifiable facts. However, it lacks a clear source citation for the data presented.",
+        "category_fit": "The voice is trustworthy and precise, which aligns well with the pharmacy category, ensuring the message maintains a professional tone suitable for a pharmacy.",
+        "merchant_fit": "The message is personalized to Apollo Health Plus Pharmacy by referencing the locality and specific customer data, but it could further enhance personalization by using the owner's name, Ramesh.",
+        "trigger_relevance": "The message directly addresses the supply alert for atorvastatin, making it relevant to the current situation. However, it could benefit from a clearer explanation of the urgency related to the recall.",
+        "engagement_compulsion": "The CTA is present but lacks a sense of urgency or compelling reason for immediate action, which may not effectively drive a response from the merchant.",
+        "penalties": []
+      },
+      "hint": "Consider weaving in a stronger sense of urgency to enhance the call to action.",
+      "rationale": "supply_alert trigger selected with score 12 (urgency 5, impact 5, ease 5, engagement 5)."
+    },
+    {
+      "message": "profile still unverified; verification can lift visibility by 30% around your Gomti Nagar area recently. This can drive immediate results. I can set this up for you now \u2014 go ahead?",
+      "cta": "I can set this up for you now \u2014 go ahead?",
+      "send_as": "vera",
+      "trigger_id": "trg_021_unverified_gbp_sunrise",
+      "trigger_kind": "gbp_unverified",
+      "merchant_id": "m_010_sunrisepharm_pharmacy_lucknow",
+      "merchant_name": "Sunrise Medicos",
+      "customer_id": null,
+      "category_slug": "pharmacies",
+      "scores": {
+        "specificity": 7,
+        "category_fit": 9,
+        "merchant_fit": 8,
+        "trigger_relevance": 9,
+        "engagement_compulsion": 6,
+        "penalties": 0,
+        "total": 39
+      },
+      "reasons": {
+        "specificity": "The message includes a specific percentage (30%) regarding the potential uplift in visibility, which is a verifiable fact. However, it lacks a concrete source citation for this claim.",
+        "category_fit": "The voice is trustworthy and precise, which aligns well with the pharmacy category, making it suitable for the context.",
+        "merchant_fit": "The message addresses the merchant by name and references their locality, but it could further personalize by mentioning the owner's name, Vikas.",
+        "trigger_relevance": "The message directly connects to the trigger of unverified GBP status and explains the potential benefits of verification, making it timely and relevant.",
+        "engagement_compulsion": "The call to action is clear, but it could be more compelling by emphasizing the urgency or potential consequences of not verifying the profile.",
+        "penalties": []
+      },
+      "hint": "Consider adding a personal touch to strengthen the connection.",
+      "rationale": "gbp_unverified trigger selected with score 6 (urgency 3, impact 4, ease 3, engagement 4)."
+    }
+  ]
+}

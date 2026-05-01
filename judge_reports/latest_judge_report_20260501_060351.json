@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-05-01T06:03:51.588942Z",
+  "bot_url": "http://localhost:8000",
+  "llm_provider": "OpenAI (gpt-4o-mini)",
+  "scenario": "full_evaluation",
+  "message_count": 5,
+  "average_scores": {
+    "specificity": 6,
+    "category_fit": 8,
+    "merchant_fit": 5,
+    "trigger_relevance": 7,
+    "engagement_compulsion": 6,
+    "penalties": 0,
+    "total": 32,
+    "percent": 64.0
+  },
+  "messages": [
+    {
+      "message": "calls down 50% in 7d. Competitors will capture these slots if you don't act now. I can run a quick fix and get you back on track. Want me to do this for you?",
+      "cta": "Want me to do this for you?",
+      "send_as": "vera",
+      "trigger_id": "trg_004_perf_dip_bharat",
+      "trigger_kind": "perf_dip",
+      "merchant_id": "m_002_bharat_dentist_mumbai",
+      "merchant_name": "Bharat Dental Care",
+      "customer_id": null,
+      "category_slug": "dentists",
+      "scores": {
+        "specificity": 7,
+        "category_fit": 8,
+        "merchant_fit": 6,
+        "trigger_relevance": 9,
+        "engagement_compulsion": 7,
+        "penalties": 0,
+        "total": 37
+      },
+      "reasons": {
+        "specificity": "The message provides a specific percentage (50%) regarding the decline in calls over a 7-day period, which is verifiable. However, it lacks a source citation for the data presented.",
+        "category_fit": "The voice is appropriately clinical and peer-to-peer, which fits the dental category well, but could be slightly warmer to better engage the merchant.",
+        "merchant_fit": "The message uses the general context of the merchant's performance but does not specifically mention Bharat Dental Care or the owner's name, which would enhance personalization.",
+        "trigger_relevance": "The message directly addresses the performance dip in calls and creates urgency by mentioning competitors, making it highly relevant to the trigger.",
+        "engagement_compulsion": "The CTA is clear and low friction, encouraging a response, but could be more compelling by emphasizing the potential consequences of inaction.",
+        "penalties": []
+      },
+      "hint": "A personal touch could elevate the connection.",
+      "rationale": "perf_dip trigger"
+    },
+    {
+      "message": "38 days since expiry; 0 lapsed customers. Every week you wait, these customers get more likely to try someone else. But now you can still win them. I'll draft an irresistible restart offer they can't refuse. Want me to do this for you?",
+      "cta": "Want me to do this for you?",
+      "send_as": "vera",
+      "trigger_id": "trg_009_winback_glamour",
+      "trigger_kind": "winback_eligible",
+      "merchant_id": "m_004_glamour_salon_pune",
+      "merchant_name": "Glamour Lounge Spa & Salon",
+      "customer_id": null,
+      "category_slug": "salons",
+      "scores": {
+        "specificity": 6,
+        "category_fit": 8,
+        "merchant_fit": 5,
+        "trigger_relevance": 7,
+        "engagement_compulsion": 8,
+        "penalties": 0,
+        "total": 34
+      },
+      "reasons": {
+        "specificity": "The message includes the number of days since expiry and mentions lapsed customers, but it incorrectly states '0 lapsed customers' instead of the actual count of 24, which misrepresents the situation.",
+        "category_fit": "The voice is warm and practical, which fits well with the salon category, encouraging a personal touch without being overly clinical or technical.",
+        "merchant_fit": "While the message addresses the merchant's situation, it does not use the merchant's name or any specific references to Glamour Lounge Spa & Salon, making it less personalized.",
+        "trigger_relevance": "The message connects to the winback trigger by highlighting the urgency of lapsed customers, but it could be more explicit about the performance dip and how it relates to the offer.",
+        "engagement_compulsion": "The CTA is clear and low friction, inviting the merchant to take action, but it could benefit from a stronger sense of urgency or a more compelling reason to respond.",
+        "penalties": []
+      },
+      "hint": "A name drop could add a personal touch.",
+      "rationale": "winback_eligible trigger"
+    },
+    {
+      "message": "delivery_late mentioned 1 times in reviews. Addressing this pattern shows you listen. I can draft a public response. Want me to do this for you?",
+      "cta": "Want me to do this for you?",
+      "send_as": "vera",
+      "trigger_id": "trg_011_review_theme_late_delivery",
+      "trigger_kind": "review_theme_emerged",
+      "merchant_id": "m_005_pizzajunction_restaurant_delhi",
+      "merchant_name": "SK Pizza Junction",
+      "customer_id": null,
+      "category_slug": "restaurants",
+      "scores": {
+        "specificity": 5,
+        "category_fit": 8,
+        "merchant_fit": 6,
+        "trigger_relevance": 7,
+        "engagement_compulsion": 6,
+        "penalties": 0,
+        "total": 32
+      },
+      "reasons": {
+        "specificity": "The message mentions 'delivery_late' and its occurrence in reviews but lacks concrete numbers or specific data about the reviews, making it somewhat vague.",
+        "category_fit": "The warm and practical tone fits well with the restaurant category, encouraging engagement without being overly formal.",
+        "merchant_fit": "While the message addresses the delivery issue, it does not personalize the message with the merchant's name or specific details about SK Pizza Junction.",
+        "trigger_relevance": "The message connects to the trigger of 'delivery_late' but could better emphasize the urgency of addressing the rising trend in complaints.",
+        "engagement_compulsion": "The CTA is clear but could be more compelling by emphasizing the potential benefits of addressing the issue or the impact on customer satisfaction.",
+        "penalties": []
+      },
+      "hint": "Consider weaving in specific merchant details to enhance connection.",
+      "rationale": "review_theme_emerged trigger"
+    },
+    {
+      "message": "You tried us on 2026-04-22. One trial is a great start; consistency wins. I can help you book your next session. Want me to do this for you?",
+      "cta": "Want me to do this for you?",
+      "send_as": "merchant_on_behalf",
+      "trigger_id": "trg_017_kids_yoga_trial_followup_karthik",
+      "trigger_kind": "trial_followup",
+      "merchant_id": "m_008_zenyoga_gym_chennai",
+      "merchant_name": "Zen Yoga Studio",
+      "customer_id": "c_012_karthik_jr_for_m008",
+      "category_slug": "gyms",
+      "scores": {
+        "specificity": 7,
+        "category_fit": 8,
+        "merchant_fit": 6,
+        "trigger_relevance": 8,
+        "engagement_compulsion": 7,
+        "penalties": 0,
+        "total": 36
+      },
+      "reasons": {
+        "specificity": "The message includes a specific date (2026-04-22) for the trial, which adds verifiable context. However, it lacks additional concrete data such as performance metrics or specific offers.",
+        "category_fit": "The voice is energetic and motivational, which fits well with the gym category, encouraging consistency and engagement.",
+        "merchant_fit": "While the message references the trial date, it does not mention the merchant's name or any specific offers available at Zen Yoga Studio, which would personalize it further.",
+        "trigger_relevance": "The message is relevant to the trigger as it follows up on the trial session, encouraging the customer to book their next session, which aligns with the urgency of the follow-up.",
+        "engagement_compulsion": "The CTA is clear and low friction, inviting a response. However, it could be more compelling by incorporating elements of loss aversion or social proof.",
+        "penalties": []
+      },
+      "hint": "Add a touch of Zen and a specific offer to enhance connection.",
+      "rationale": "trial_followup trigger"
+    },
+    {
+      "message": "Smile Studio opened 1.3 km away. Competing on price is tough; compete on quality instead. I can highlight your unique value. Want me to do this for you?",
+      "cta": "Want me to do this for you?",
+      "send_as": "vera",
+      "trigger_id": "trg_023_competitor_opened_dentist",
+      "trigger_kind": "competitor_opened",
+      "merchant_id": "m_001_drmeera_dentist_delhi",
+      "merchant_name": "Dr. Meera's Dental Clinic",
+      "customer_id": null,
+      "category_slug": "dentists",
+      "scores": {
+        "specificity": 5,
+        "category_fit": 8,
+        "merchant_fit": 6,
+        "trigger_relevance": 7,
+        "engagement_compulsion": 6,
+        "penalties": 0,
+        "total": 32
+      },
+      "reasons": {
+        "specificity": "The message mentions a specific competitor and their offer, but lacks concrete data about Dr. Meera's Dental Clinic's unique value or performance metrics.",
+        "category_fit": "The voice is appropriate for a dental clinic, maintaining a peer-to-peer clinical tone while addressing competition.",
+        "merchant_fit": "The message uses the merchant's name and references the competitor, but it does not personalize the message further with specific data about Dr. Meera's clinic.",
+        "trigger_relevance": "The message connects to the trigger of a competitor opening nearby, but it could be more urgent by emphasizing the need for immediate action.",
+        "engagement_compulsion": "The CTA is clear, but it lacks a compelling reason for the merchant to respond quickly, such as potential loss or urgency.",
+        "penalties": []
+      },
+      "hint": "Consider weaving in specific strengths of Dr. Meera's clinic to enhance urgency and relevance.",
+      "rationale": "competitor_opened trigger"
+    }
+  ]
+}
