@@ -62,15 +62,15 @@ async def healthz() -> dict[str, Any]:
 
 
 @app.get("/v1/metadata")
-async def metadata() -> dict[str, Any]:
+async def metadata():
     return {
-        "team_name": TEAM_NAME,
-        "team_members": TEAM_MEMBERS,
-        "model": GROQ_MODEL or "deterministic-rule-engine",
+        "team_name": "DNA paradox",
+        "team_members": ["Devansh Shukla"],
+        "model": "deterministic-rule-engine",
         "approach": "rule-based decision engine + deterministic structured renderer + reply state machine",
-        "contact_email": CONTACT_EMAIL,
-        "version": BOT_VERSION,
-        "submitted_at": "2026-04-29T00:00:00Z",
+        "contact_email": "dshukl2004@gmail.com",
+        "version": "1.0.0",
+        "submitted_at": "2026-05-02T00:00:00Z"
     }
 
 
