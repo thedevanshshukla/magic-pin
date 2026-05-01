@@ -78,15 +78,29 @@ async def metadata() -> dict[str, Any]:
 async def push_context(body: ContextBody) -> dict[str, Any]:
     if body.scope not in {"category", "merchant", "customer", "trigger"}:
         return {"accepted": False, "reason": "invalid_scope", "details": body.scope}
-    accepted, current_version = store.upsert_context(body.scope, body.context_id, body.version, body.payload)
-    if not accepted:
-        return {"accepted": False, "reason": "stale_version", "current_version": current_version}
+    store.upsert_context(body.scope, body.context_id, body.version, body.payload)
+    if body.scope == "category":
+        print("CATEGORY STORED:", body.context_id)
+    elif body.scope == "merchant":
+        print("MERCHANT STORED:", body.context_id)
+    elif body.scope == "trigger":
+        print("TRIGGER STORED:", body.context_id)
     return {"accepted": True, "ack_id": f"ack_{body.context_id}_v{body.version}", "stored_at": iso_now()}
+
+
+@app.post("/reset")
+@app.post("/v1/reset")
+async def reset_contexts() -> dict[str, Any]:
+    store.reset()
+    return {"status": "reset"}
 
 
 @app.post("/v1/tick")
 async def tick(body: TickBody) -> dict[str, Any]:
     now = parse_iso(body.now) or datetime.now(timezone.utc)
+    counts = store.counts()
+    print("CATEGORIES:", counts.get("category", 0))
+    print("MERCHANTS:", counts.get("merchant", 0))
     candidates: list[tuple[int, dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any] | None, Any, dict[str, str]]] = []
     for trigger in store.active_trigger_payloads(body.available_triggers, now):
         suppression_key = trigger.get("suppression_key", "")
@@ -94,12 +108,12 @@ async def tick(body: TickBody) -> dict[str, Any]:
             continue
         merchant = store.get_context("merchant", trigger.get("merchant_id"))
         if not merchant:
-            continue
+            raise RuntimeError("Context missing — aborting message generation")
         if store.merchant_muted(merchant.get("merchant_id"), now):
             continue
         category = store.get_context("category", merchant.get("category_slug"))
         if not category:
-            continue
+            raise RuntimeError("Context missing — aborting message generation")
         customer = store.get_context("customer", trigger.get("customer_id")) if trigger.get("customer_id") else None
         if not customer and trigger.get("scope") == "customer":
             customer = infer_customer_stub(

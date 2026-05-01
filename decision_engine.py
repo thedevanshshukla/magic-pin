@@ -40,20 +40,20 @@ class DecisionEngine:
         customer: dict[str, Any] | None = None,
     ) -> Intent:
         """Build intent from trigger with simplified, stable logic."""
+        if not merchant or not category:
+            raise RuntimeError("Context missing — aborting message generation")
         kind = trigger.get("kind", "")
         payload = trigger.get("payload", {})
-        
-        # Determine basic context
+
         customer_scoped = bool(customer or trigger.get("scope") == "customer")
         send_as = "merchant_on_behalf" if customer_scoped else "vera"
         audience = "customer" if customer_scoped else "merchant"
         tone = self.TONE_MAP.get(merchant.get("category_slug", category.get("slug", "")), "practical")
-        
-        # Build fact, insight, action directly from payload
+
         fact = ""
         insight = ""
-        action = "I can help with this."
-        cta = "Want me to help?"
+        action = ""
+        cta = "Want me to do this for you?"
         cta_type = "open_ended"
         strategy = "inform + action"
         
@@ -268,12 +268,11 @@ class DecisionEngine:
             insight = "Continuing education keeps you sharp."
             action = "I can send you the link."
             strategy = "educate + curiosity"
-        
         else:
-            fact = f"Event: {kind} triggered"
-            insight = "This needs your attention."
-            action = "I can help you respond."
-            strategy = "inform + action"
+            raise RuntimeError(f"Unsupported trigger kind: {kind}")
+
+        if not fact or not insight or not action:
+            raise RuntimeError("Context missing — aborting message generation")
         
         # Priority score is simple: based on urgency and kind
         urgency = trigger.get("urgency", 1)

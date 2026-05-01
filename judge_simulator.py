@@ -209,7 +209,7 @@ class OpenAIProvider(LLMProvider):
         body = json.dumps({
             "model": self.model,
             "messages": messages,
-            "temperature": 0.2,
+            "temperature": 0.0,
             "max_tokens": 1500
         }).encode("utf-8")
 
@@ -260,7 +260,7 @@ class GeminiProvider(LLMProvider):
         full_prompt = f"{system}\n\n{prompt}" if system else prompt
         body = json.dumps({
             "contents": [{"parts": [{"text": full_prompt}]}],
-            "generationConfig": {"temperature": 0.2, "maxOutputTokens": 1500}
+            "generationConfig": {"temperature": 0.0, "maxOutputTokens": 1500}
         }).encode("utf-8")
 
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent?key={self.api_key}"
@@ -287,7 +287,7 @@ class DeepSeekProvider(LLMProvider):
         req = urlrequest.Request(
             "https://api.deepseek.com/v1/chat/completions",
             data=json.dumps({"model": self.model, "messages": messages,
-                            "temperature": 0.2, "max_tokens": 1500}).encode("utf-8"),
+                            "temperature": 0.0, "max_tokens": 1500}).encode("utf-8"),
             headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
         )
         resp = urlrequest.urlopen(req, timeout=TIMEOUT_LLM)
@@ -312,7 +312,7 @@ class GroqProvider(LLMProvider):
         req = urlrequest.Request(
             "https://api.groq.com/openai/v1/chat/completions",
             data=json.dumps({"model": self.model, "messages": messages,
-                            "temperature": 0.2, "max_tokens": 1500}).encode("utf-8"),
+                            "temperature": 0.0, "max_tokens": 1500}).encode("utf-8"),
             headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
         )
         resp = urlrequest.urlopen(req, timeout=TIMEOUT_LLM)
@@ -333,7 +333,7 @@ class OllamaProvider(LLMProvider):
         req = urlrequest.Request(
             f"{self.api_url}/api/generate",
             data=json.dumps({"model": self.model, "prompt": full_prompt,
-                            "stream": False, "options": {"temperature": 0.2}}).encode("utf-8"),
+                            "stream": False, "options": {"temperature": 0.0}}).encode("utf-8"),
             headers={"Content-Type": "application/json"}
         )
         resp = urlrequest.urlopen(req, timeout=90)
@@ -358,7 +358,7 @@ class OpenRouterProvider(LLMProvider):
         req = urlrequest.Request(
             "https://openrouter.ai/api/v1/chat/completions",
             data=json.dumps({"model": self.model, "messages": messages,
-                            "temperature": 0.2, "max_tokens": 1500}).encode("utf-8"),
+                            "temperature": 0.0, "max_tokens": 1500}).encode("utf-8"),
             headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json",
                      "HTTP-Referer": "https://magicpin.com"}
         )

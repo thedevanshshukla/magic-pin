@@ -23,30 +23,56 @@ class ConversationState:
 
 class ContextStore:
     def __init__(self) -> None:
-        self._contexts: dict[tuple[str, str], dict[str, Any]] = {}
+        self.categories: dict[str, dict[str, Any]] = {}
+        self.merchants: dict[str, dict[str, Any]] = {}
+        self.customers: dict[str, dict[str, Any]] = {}
+        self.triggers: dict[str, dict[str, Any]] = {}
         self._conversations: dict[str, ConversationState] = {}
         self._suppression: dict[str, datetime] = {}
         self._merchant_mute_until: dict[str, datetime] = {}
 
     def counts(self) -> dict[str, int]:
-        counts = {"category": 0, "merchant": 0, "customer": 0, "trigger": 0}
-        for (scope, _), _value in self._contexts.items():
-            counts[scope] = counts.get(scope, 0) + 1
-        return counts
+        return {
+            "category": len(self.categories),
+            "merchant": len(self.merchants),
+            "customer": len(self.customers),
+            "trigger": len(self.triggers),
+        }
 
     def upsert_context(self, scope: str, context_id: str, version: int, payload: dict[str, Any]) -> tuple[bool, int | None]:
-        key = (scope, context_id)
-        current = self._contexts.get(key)
-        if current and current["version"] >= version:
-            return False, current["version"]
-        self._contexts[key] = {"version": version, "payload": payload}
+        if scope == "category":
+            self.categories[context_id] = payload
+        elif scope == "merchant":
+            self.merchants[context_id] = payload
+        elif scope == "customer":
+            self.customers[context_id] = payload
+        elif scope == "trigger":
+            self.triggers[context_id] = payload
+        else:
+            return False, None
         return True, None
+
+    def reset(self) -> None:
+        self.categories.clear()
+        self.merchants.clear()
+        self.customers.clear()
+        self.triggers.clear()
+        self._conversations.clear()
+        self._suppression.clear()
+        self._merchant_mute_until.clear()
 
     def get_context(self, scope: str, context_id: str | None) -> dict[str, Any] | None:
         if not context_id:
             return None
-        record = self._contexts.get((scope, context_id))
-        return record["payload"] if record else None
+        if scope == "category":
+            return self.categories.get(context_id)
+        if scope == "merchant":
+            return self.merchants.get(context_id)
+        if scope == "customer":
+            return self.customers.get(context_id)
+        if scope == "trigger":
+            return self.triggers.get(context_id)
+        return None
 
     def remember_send(self, suppression_key: str, expires_at: str | None) -> None:
         expiry = parse_iso(expires_at) or (utc_now() + timedelta(days=7))

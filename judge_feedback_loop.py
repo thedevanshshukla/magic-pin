@@ -9,6 +9,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 from urllib import error as urlerror
 from urllib import request as urlrequest
+import requests
 
 from judge_simulator import REPORTS_DIR, run_judge_session
 
@@ -113,6 +114,10 @@ def main() -> int:
         process = start_backend()
         iterations: list[dict] = []
         for index in range(1, ITERATIONS + 1):
+            try:
+                requests.post(f"{BOT_URL}/reset", timeout=10)
+            except Exception:
+                requests.post(f"{BOT_URL}/v1/reset", timeout=10)
             print(f"Running judge iteration {index}/{ITERATIONS}...")
             report = run_judge_session(scenario="full_evaluation", provider=os.getenv("LLM_PROVIDER", "groq"), bot_url=BOT_URL)
             summary = summarize_report(report)
