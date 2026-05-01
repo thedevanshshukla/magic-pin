@@ -16,6 +16,13 @@ class ReplyEngine:
         message: str,
     ) -> dict[str, Any]:
         lowered = message.lower()
+        if any(x in lowered for x in ["ok lets do it", "let's do it", "whats next", "what next", "what's next", "go ahead"]):
+            return {
+                "action": "send",
+                "body": "Got it — I’ll proceed and set this up now. Want me to push it live now?",
+                "cta": "open_ended",
+                "rationale": "user intent to proceed",
+            }
         if detect_negative_intent(lowered):
             return {
                 "action": "end",

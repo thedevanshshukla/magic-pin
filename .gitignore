@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+.idea/
+*.swp
+*.swo
+*~
+.vscode/settings.json
+judge_reports/

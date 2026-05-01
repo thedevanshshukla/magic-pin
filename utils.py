@@ -213,24 +213,36 @@ def detect_out_of_scope(message: str) -> bool:
 
 
 def meaningful_conversation_id(trigger: dict[str, Any], merchant: dict[str, Any], customer: dict[str, Any] | None = None) -> str:
+    import re
+
     kind = trigger.get("kind", "message")
     merchant_id = merchant.get("merchant_id", "merchant")
+
+    # ✅ SAFE extraction
+    parts = merchant_id.split("_")
+    mid = parts[-1]
+
     owner = merchant.get("identity", {}).get("owner_first_name", "merchant").lower()
+
     if customer:
         customer_name = customer.get("identity", {}).get("name", "customer").split(" ")[0].lower()
+
         if kind == "recall_due":
             due = trigger.get("payload", {}).get("due_date", "")
             parts = due.split("-")
             month_suffix = "_".join(parts[:2]) if len(parts) >= 2 else "due"
             return f"conv_{customer_name}_recall_{month_suffix}"
+
         suffix = re.sub(r"[^a-z0-9]+", "_", kind)
-        return f"conv_{customer_name}_{suffix}_{merchant_id.split('_')[1]}"
+        return f"conv_{customer_name}_{suffix}_{mid}"
+
     if kind == "research_digest":
         suppression = trigger.get("suppression_key", "")
         week = suppression.split(":")[-1] if suppression else "digest"
-        return f"conv_{merchant_id.split('_')[1]}_{owner}_{week}"
+        return f"conv_{mid}_{owner}_{week}"
+
     suffix = re.sub(r"[^a-z0-9]+", "_", kind)
-    return f"conv_{merchant_id.split('_')[1]}_{suffix}"
+    return f"conv_{mid}_{suffix}"
 
 
 def expiry_passed(expires_at: str | None, now: datetime) -> bool:

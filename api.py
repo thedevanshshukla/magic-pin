@@ -168,14 +168,27 @@ async def tick(body: TickBody) -> dict[str, Any]:
 @app.post("/v1/reply")
 async def reply(body: ReplyBody) -> dict[str, Any]:
     conversation = store.note_reply(body.conversation_id, body.from_role, body.message, body.received_at)
-    if not conversation:
+    if conversation:
+        merchant = store.get_context("merchant", conversation.merchant_id) or {}
+        trigger = store.get_context("trigger", conversation.trigger_id) or {}
+        customer = store.get_context("customer", conversation.customer_id) if conversation.customer_id else None
+    elif body.merchant_id:
+        merchant = store.get_context("merchant", body.merchant_id) or {"merchant_id": body.merchant_id}
+        trigger = next((item for item in store.triggers.values() if item.get("merchant_id") == body.merchant_id), {})
+        customer = store.get_context("customer", body.customer_id) if body.customer_id else None
+        conversation = ConversationState(
+            conversation_id=body.conversation_id,
+            trigger_id=trigger.get("id", ""),
+            merchant_id=merchant.get("merchant_id", body.merchant_id),
+            customer_id=body.customer_id,
+            send_as=merchant.get("send_as", "merchant"),
+            created_at=body.received_at,
+        )
+    else:
         return {
             "action": "end",
             "rationale": "Conversation not found. Ending safely rather than guessing context.",
         }
-    merchant = store.get_context("merchant", conversation.merchant_id) or {}
-    trigger = store.get_context("trigger", conversation.trigger_id) or {}
-    customer = store.get_context("customer", conversation.customer_id) if conversation.customer_id else None
     response = reply_engine.respond(conversation, merchant, trigger, customer, body.message)
     if response.get("action") == "send" and response.get("body"):
         response["body"] = truncate_body(response["body"])
