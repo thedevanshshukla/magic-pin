@@ -276,24 +276,26 @@ Candidates are ranked by priority_score; highest wins.
 
 ### Scoring (Judge Evaluation)
 
-**FINAL VALIDATION RESULTS: 40/50 (80% quality score)**
+**FINAL VALIDATION RESULTS: 41/50 (82% quality score) — STABLE OPTIMIZED VERSION**
 
-All 5 test messages scored 41-43/50 with tight consistency:
+Latest 5 test messages scored 41-46/50 with consistent pattern:
 
-| Trigger Kind | Score | Specificity | Category Fit | Merchant Fit | Trigger Relevance |
-|--------------|-------|-------------|--------------|--------------|-------------------|
-| regulation_change | 41/50 | 8/10 | 9/10 | 9/10 | 8/10 |
-| wedding_package_followup | 41/50 | 8/10 | 9/10 | 8/10 | 9/10 |
-| customer_lapsed_hard | 41/50 | 8/10 | 9/10 | 9/10 | 8/10 |
-| supply_alert (pharmacy) | 43/50 | 9/10 | 10/10 | 8/10 | 9/10 |
-| gbp_unverified | 41/50 | 8/10 | 9/10 | 8/10 | 9/10 |
+| Trigger Kind | Score | Specificity | Category Fit | Merchant Fit | Trigger Relevance | Engagement |
+|--------------|-------|-------------|--------------|--------------|-------------------|-----------|
+| regulation_change | 41/50 | 8/10 | 9/10 | 8/10 | 9/10 | 7/10 |
+| wedding_package_followup | 42/50 | 8/10 | 9/10 | 9/10 | 9/10 | 7/10 |
+| customer_lapsed_hard | 41/50 | 8/10 | 9/10 | 8/10 | 9/10 | 7/10 |
+| supply_alert (pharmacy) | 43/50 | 9/10 | 10/10 | 8/10 | 9/10 | 7/10 |
+| gbp_unverified | 46/50 | 9/10 | 10/10 | 9/10 | 10/10 | 8/10 |
 
 **Scoring Breakdown:**
-- **Specificity**: Avg 8/10 (merchant names, dates, batches, and verification paths are explicit)
-- **Category Fit**: Avg 9/10 (tone is precise, clinical, or aspirational as needed)
-- **Merchant Fit**: Avg 8.4/10 (includes merchant context and relevant business details)
-- **Trigger Relevance**: Avg 8.6/10 (directly addresses root cause of each trigger)
-- **Engagement Compulsion**: Avg 7/10 (clear CTA, not forced, contextually appropriate)
+- **Specificity**: Avg 8/10 (merchant names, dates, batches, verification paths explicit)
+- **Category Fit**: Avg 9/10 (tone is precise and contextually appropriate)
+- **Merchant Fit**: Avg 8/10 (includes merchant context and business details)
+- **Trigger Relevance**: Avg 9/10 (directly addresses root cause of each trigger)
+- **Engagement Compulsion**: Avg 7/10 (clear CTA, appropriate but not maximally compelling)
+
+**Key Insight**: The 46/50 (gbp_unverified) message scores 8/10 on engagement because it includes a **quantified benefit** ("can lift visibility by 30%") from the payload. Messages lacking quantified metrics plateau at 7/10 engagement. See "Engagement Optimization Analysis" section below.
 
 ---
 
@@ -410,4 +412,92 @@ python judge_feedback_loop.py
 4. Add location-based personalization to facts
 5. Track message performance metrics and learn top performers
 6. Implement soft suppression (reduce frequency vs. hard block)
+
+---
+
+## Engagement Optimization Analysis (41/50 Current Optimum)
+
+### Problem Statement
+Initial goal: improve from 40/50 → 45/50 by optimizing **engagement_compulsion** dimension (7/10 bottleneck).
+
+### Investigation & Attempts
+
+**Attempt 1: Consequence/Benefit Narrative Language**
+- Changed insights to emphasize consequences: "competitors will capture slots", "your customers get closer to trying someone else"
+- Changed actions to be more benefit-focused: "draft an irresistible comeback offer"
+- Result: Score dropped to 39/50; specificity decreased from 8→7/10
+- Finding: Narrative language replaces factual precision; judge penalizes this
+
+**Attempt 2: Specific Action Promises**
+- Added concrete time estimates: "I can fix this in 15 minutes", "I can book in 30 seconds"
+- Added specific counts: "irresistible restart offer for all {count}"
+- Result: Score dropped to 40/50; PowerHouse message dropped from 8→6/10 engagement
+- Finding: Awkward phrasing ("comeback offer you can send today to Rashmi today") and arbitrary time estimates hurt credibility
+
+**Attempt 3: Quantified Benefits & Owner Personalization**
+- Extracted lapsed_count for winback messages
+- Added owner names from merchant.identity.owner
+- Kept facts and insights unchanged
+- Result: No improvement; score fluctuated around 41/50
+- Finding: Owner names not reliably available in payload; quantified counts alone don't drive engagement
+
+### Root Cause Analysis
+
+The **8/10 engagement message** (gbp_unverified, 46/50 total) has a key feature absent from 7/10 messages:
+
+```
+"Verification via postcard_or_phone_call can lift visibility by 30%."
+                                                        ↑↑↑↑
+                                     Quantified business benefit from payload
+```
+
+**Why 7/10 engagement plateau exists:**
+1. Most trigger payloads lack quantified business metrics (e.g., % visibility lift, revenue impact, customer count before/after)
+2. Adding artificial urgency/consequence language reduces specificity scoring (LLM judge values data precision)
+3. Generic promises ("I can help", "I can draft") are considered low-friction but not compelling without supporting metrics
+4. Engagement scoring rewards **payload-backed precision** over **emotive language**
+
+### Current Optimum: 41/50 (82%)
+
+**Why 41/50 is Stable:**
+- ✅ All messages use ONLY facts from payload
+- ✅ Insights are neutral, not forced urgency
+- ✅ Actions state what Vera will do, not what merchant must do
+- ✅ CTA is consistent and low-friction
+- ✅ Specificity + Category Fit + Merchant Fit + Trigger Relevance all score 8-9/10
+- ✅ Engagement plateaus at 7/10 due to missing quantified benefits in most triggers
+
+**To Reach 45/50+ from Current 41/50:**
+
+Would require ONE of:
+
+1. **Payload Enrichment** (Recommended)
+   - Add quantified metrics to triggers: visibility_lift_pct, revenue_impact, customer_recovery_rate, etc.
+   - Example: `supply_alert` payload includes "estimated_liability_cost: $50,000" → "This puts your business at risk for $50k liability."
+   - Estimated impact: +1-2 points per message (specificity + engagement)
+
+2. **Trigger-Specific Insights** (Limited ROI)
+   - Create category-aware or signal-specific insight variants
+   - Example: dental recall → "live booking window" (good), pharmacy recall → "patient safety risk" (stronger)
+   - Estimated impact: +0.5 points per message
+
+3. **Conditional CTAs** (Contradicts Design Philosophy)
+   - Add multi-choice CTAs per trigger: "Reply 1 to proceed" vs. "Want me to do this?"
+   - Breaks deterministic principle; increases complexity
+   - Estimated impact: +0.5-1 point per message (but with implementation risk)
+
+4. **Owner Name Injection** (Dependency on Data)
+   - Require merchant.identity.owner in ALL payloads
+   - Use in insight: "Dr. Meera, ..." or action: "I'll have it ready for you by..."
+   - Estimated impact: +0.2-0.5 points per message
+   - Blocker: owner names not consistently available
+
+### Conclusion
+
+**41/50 represents a stable local optimum** within the current design constraints (payload structure, fact-driven philosophy, deterministic pipeline). Further improvements are constrained by:
+- Limited quantified metrics in payloads
+- Architectural choice to prioritize specificity over emotive appeal
+- Judge's preference for data-backed claims over narrative urgency
+
+To sustainably reach 45+/50, **payload enrichment with quantified business impact metrics is the highest-ROI path**.
 
