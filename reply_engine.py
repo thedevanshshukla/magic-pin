@@ -15,7 +15,13 @@ class ReplyEngine:
         customer: dict[str, Any] | None,
         message: str,
     ) -> dict[str, Any]:
-        lowered = message.lower()
+        lowered = message.lower().strip()
+        
+        # Low-intent / auto-reply check: end conversation immediately
+        LOW_INTENT = ["ok", "okay", "k", "kk", "thanks", "thank you", "received", "noted", "cool"]
+        if lowered in LOW_INTENT:
+            return {"action": "end"}
+        
         if any(x in lowered for x in ["ok lets do it", "let's do it", "whats next", "what next", "what's next", "go ahead"]):
             return {
                 "action": "send",
@@ -29,23 +35,7 @@ class ReplyEngine:
                 "rationale": "Merchant explicitly opted out or showed frustration. Closing the conversation cleanly.",
             }
         if detect_auto_reply(message):
-            if conversation.auto_reply_count <= 1:
-                return {
-                    "action": "send",
-                    "body": "Looks like an auto-reply. When the owner sees this, a simple 'Yes' is enough and I'll take the next step.",
-                    "cta": "binary_yes_no",
-                    "rationale": "Detected canned business auto-reply; making one low-friction attempt for the owner.",
-                }
-            if conversation.auto_reply_count == 2:
-                return {
-                    "action": "wait",
-                    "wait_seconds": 86400,
-                    "rationale": "Same auto-reply twice in a row, so backing off for 24h.",
-                }
-            return {
-                "action": "end",
-                "rationale": "Auto-reply repeated 3x with no human engagement signal. Closing the conversation.",
-            }
+            return {"action": "end"}
         if detect_wait_intent(lowered):
             return {
                 "action": "wait",
