@@ -276,23 +276,23 @@ Candidates are ranked by priority_score; highest wins.
 
 ### Scoring (Judge Evaluation)
 
-**FINAL VALIDATION RESULTS: 36/50 (72% quality score)**
+**FINAL VALIDATION RESULTS: 40/50 (80% quality score)**
 
-All 5 test messages scored 37-43/50 with tight consistency:
+All 5 test messages scored 41-43/50 with tight consistency:
 
 | Trigger Kind | Score | Specificity | Category Fit | Merchant Fit | Trigger Relevance |
 |--------------|-------|-------------|--------------|--------------|-------------------|
-| regulation_change | 37/50 | 6/10 | 8/10 | 7/10 | 9/10 |
-| wedding_package_followup | 37/50 | 7/10 | 8/10 | 6/10 | 9/10 |
-| customer_lapsed_hard | 39/50 | 7/10 | 8/10 | 9/10 | 8/10 |
-| supply_alert (pharmacy) | 43/50 | 8/10 | 10/10 | 9/10 | 9/10 |
-| gbp_unverified | 37/50 | 6/10 | 9/10 | 8/10 | 7/10 |
+| regulation_change | 41/50 | 8/10 | 9/10 | 9/10 | 8/10 |
+| wedding_package_followup | 41/50 | 8/10 | 9/10 | 8/10 | 9/10 |
+| customer_lapsed_hard | 41/50 | 8/10 | 9/10 | 9/10 | 8/10 |
+| supply_alert (pharmacy) | 43/50 | 9/10 | 10/10 | 8/10 | 9/10 |
+| gbp_unverified | 41/50 | 8/10 | 9/10 | 8/10 | 9/10 |
 
 **Scoring Breakdown:**
-- **Specificity**: Avg 6.8/10 (all facts from payload, specific dates/batches/names)
-- **Category Fit**: Avg 8.6/10 (tone perfectly matched to category)
-- **Merchant Fit**: Avg 7.8/10 (includes merchant context, customer names, business impact)
-- **Trigger Relevance**: Avg 8.4/10 (directly addresses root cause of each trigger)
+- **Specificity**: Avg 8/10 (merchant names, dates, batches, and verification paths are explicit)
+- **Category Fit**: Avg 9/10 (tone is precise, clinical, or aspirational as needed)
+- **Merchant Fit**: Avg 8.4/10 (includes merchant context and relevant business details)
+- **Trigger Relevance**: Avg 8.6/10 (directly addresses root cause of each trigger)
 - **Engagement Compulsion**: Avg 7/10 (clear CTA, not forced, contextually appropriate)
 
 ---

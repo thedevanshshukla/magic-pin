@@ -69,19 +69,26 @@ class DecisionEngine:
         elif kind == "supply_alert":
             batches = payload.get("affected_batches", [])
             molecule = payload.get("molecule", "item")
-            batch_count = len(batches)
-            if batch_count > 0:
+            manufacturer = payload.get("manufacturer", "manufacturer")
+            alert_id = payload.get("alert_id", "")
+            if batches:
                 batch_str = ", ".join(batches[:2]) if len(batches) <= 2 else f"{batches[0]}, {batches[1]}"
-                fact = f"{molecule.title()} — {len(batches)} batches affected: {batch_str}"
+                fact = f"{molecule.title()} recall from {manufacturer}; {len(batches)} batches affected: {batch_str}"
             else:
-                fact = f"{molecule.title()} has quality issues"
+                fact = f"{molecule.title()} recall from {manufacturer}"
+            if alert_id:
+                fact = f"{fact} ({alert_id})"
             insight = "This needs prompt action to protect patients."
             action = "I can draft a patient-safe notification."
             strategy = "inform + urgency"
         
         elif kind == "gbp_unverified":
-            fact = "Your profile is still unverified on Google."
-            insight = "This is limiting your discoverability."
+            merchant_name = merchant.get("identity", {}).get("name", "Your profile")
+            verification_path = payload.get("verification_path", "postcard or phone call")
+            uplift_pct = payload.get("estimated_uplift_pct", 0)
+            uplift_text = f"{int(uplift_pct * 100)}%" if uplift_pct else "more"
+            fact = f"{merchant_name}: Google profile is still unverified"
+            insight = f"Verification via {verification_path} can lift visibility by {uplift_text}."
             action = "I can guide you through verification."
             strategy = "recover + loss_aversion"
         
@@ -101,7 +108,8 @@ class DecisionEngine:
                 days_since = payload.get("days_since_last_visit", 0)
                 focus = payload.get("previous_focus", "")
                 months = payload.get("previous_membership_months", 0)
-                fact = f"{customer_name}, it's been {days_since} days since your {focus} session"
+                merchant_name = merchant.get("identity", {}).get("name", "This gym")
+                fact = f"{merchant_name}: {customer_name}, it's been {days_since} days since your {focus} session"
                 if months > 0:
                     insight = f"You were with us for {months} months — you can return."
                 else:
@@ -172,10 +180,14 @@ class DecisionEngine:
             strategy = "loss_aversion"
         
         elif kind == "regulation_change":
-            regulation = payload.get("regulation", "compliance requirement")
+            regulation = payload.get("top_item_id", payload.get("regulation", "compliance requirement"))
+            regulation = str(regulation).replace("d_", "").replace("_", " ")
+            if regulation.lower().startswith("dci "):
+                regulation = "DCI " + regulation[4:]
             deadline = payload.get("deadline_iso", "soon")
-            fact = f"{regulation} due by {deadline[:10]}"
-            insight = "Acting early avoids penalties."
+            merchant_name = merchant.get("identity", {}).get("name", "Your clinic")
+            fact = f"{merchant_name}: {regulation} due by {deadline[:10]}"
+            insight = "Acting early avoids penalties and avoids last-minute work."
             action = "I can create a compliance checklist."
             strategy = "inform + action"
         
@@ -221,7 +233,8 @@ class DecisionEngine:
         elif kind == "wedding_package_followup":
             wedding_date = payload.get("wedding_date", "soon")
             days_to_wedding = payload.get("days_to_wedding", 0)
-            fact = f"Wedding on {wedding_date} — {days_to_wedding} days away"
+            merchant_name = merchant.get("identity", {}).get("name", "Your salon")
+            fact = f"{merchant_name}: wedding on {wedding_date} — {days_to_wedding} days away"
             insight = "Now is the time to start your skin prep."
             action = "I can schedule your first session."
             cta = "Reply 1 to book or 2 if not ready yet."
