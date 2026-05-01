@@ -24,7 +24,7 @@ class MessageComposer:
         insight = intent.insight or ""
         action = intent.action or ""
         # Strict composition: no validation, no fallbacks, no humanizer.
-        body_struct = {"fact": fact, "insight": insight, "action": action}
+        body_struct = {"fact": fact, "insight": insight, "action": action, "cta": intent.cta}
         rendered = self.renderer.render(body_struct)
         body = rendered.get("body", "")
 
